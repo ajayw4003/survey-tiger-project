@@ -10,7 +10,7 @@ const Display = ({allQue, setIspublish}) => {
         <div>
             {allQue.map((item, i) =>(
                 <>
-                    <div key = {i} className = "col-md-6 col-12 my-3">{item.question}</div>
+                    <div key = {i} className = "col-md-6 col-12 my-3"><h3>{item.question}</h3></div>
                     <div className = "col-md-4 col-12 m-2 items" key = {randomNum()}>{item.optionOfQue.map((opt)=>(
                         <>
                         {item.optionOfQue.length === 4 ? (<div>
