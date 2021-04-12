@@ -3,17 +3,22 @@ import TypeSelector from "./TypeSelector";
 import Questions from './Questions'
 import Options from './Options';
 import Buttons from "./Button";
-import Display from './Display';
+import { useHistory } from 'react-router';
 
-const CreateSurvey = () => {
+const CreateSurvey = ({allQue, setAllQue, setIspublish, ispublish}) => {
 
     const randomNum = () => {return Math.floor((Math.random()*100)+1)};
     // const [qtext, setQtext] = useState("");
     const [qtype, setQtype] = useState(0);
     const [options, setOptions]  = useState();
     const [que, setQue] = useState();
-    const [allQue, setAllQue] = useState([]);
-    const [ispublish, setIspublish] = useState(false);
+    const history = useHistory();
+    
+    const Publish = () =>{
+        addQuestion();
+        history.push('./takeSurvey');
+        setIspublish(true);
+    }    
 
     const handleQue = (e) =>{
         setQue(e.target.value);
@@ -70,23 +75,20 @@ const CreateSurvey = () => {
         console.log(allQue);
 
         if(qtype === 1){
-            setOptions([{uid:randomNum(), value:''}, {uid:randomNum(), value:''}, {uid:randomNum(), value:''},{uid:randomNum(), value:''} ]);
+            setOptions([{uid:randomNum(), value:''}]);
         }
         else if(qtype === 2) {
             setOptions([{uid:randomNum(), value:''},{uid:randomNum(), value:''}])
         }
+        setIspublish(true);
+        setQtype(0);
     }
 
-    const handlePublish = () =>{
-        setIspublish(true);
-    }
 
     return (
         <div>
             <h1>Create Survey</h1>
 
-            {ispublish ? (<Display allQue = {allQue} setIspublish = {setIspublish}/>) :
-             (<>
 
                 <TypeSelector qtype = {qtype} setQtype = {setQtype} handlechange = {handlechange}/>
 
@@ -108,16 +110,11 @@ const CreateSurvey = () => {
                     null
                 }
                 {qtype === 2 ? 
-                    (<Buttons addQuestion = {addQuestion} handlePublish = {handlePublish}/>): 
+                    (<Buttons addQuestion = {addQuestion} Publish ={Publish}/>): 
                     (qtype === 1 ? 
-                    (options.length >= 4 ? (<Buttons addQuestion = {addQuestion} handlePublish ={handlePublish}/>): null)
+                    (options.length >= 4 ? (<Buttons addQuestion = {addQuestion} Publish ={Publish}/>): null)
                     : null)}
-
-             </>)
-             }
-            
-
-            
+              
             
         </div>
     );

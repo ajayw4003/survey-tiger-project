@@ -1,7 +1,7 @@
 import React from 'react';
 import "./options.css"
 
-const Display = ({allQue, setIspublish, options}) => {
+const Display = ({allQue, setIspublish}) => {
     const randomNum = () => {
         return Math.floor(Math.random()* 1000);
     }

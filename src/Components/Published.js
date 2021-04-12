@@ -1,10 +1,13 @@
 import React from 'react';
+import Display from "./Display";
 
-const Published = () => {
+const Published = ({allQue, ispublish, setIspublish}) => {
+
+    
     return (
-        <div>
-            <h1>Survey is Published</h1>
-        </div>
+        <>
+            {ispublish ? (<Display allQue = {allQue} setIspublish = {setIspublish} />):<h2>No Questions Added</h2>}
+        </>
     );
 };
 

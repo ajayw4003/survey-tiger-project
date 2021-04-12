@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Logo from "./logo.png";
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
@@ -7,6 +8,9 @@ import CreateSurvey from "./Components/CreateSurvey";
 import Published from "./Components/Published";
 
 function App() {
+  const [allQue, setAllQue] = useState([]);
+  const [ispublish, setIspublish] = useState(false);
+
   return (
     <div className="App">
       <div className = "col-md-10 col-12 offset-md-1 text-center">
@@ -18,8 +22,8 @@ function App() {
           <Switch>
             <Route path ="/" component = {Menu} exact/>
 
-            <Route path ="/createSurvey"><CreateSurvey/></Route>
-            <Route path ="/published"><Published /></Route>
+            <Route path ="/createSurvey"><CreateSurvey allQue = {allQue} setAllQue = {setAllQue} ispublish = {ispublish} setIspublish = {setIspublish}/></Route>
+            <Route path ="/takeSurvey"><Published  allQue = {allQue} ispublish = {ispublish} setIspublish = {setIspublish}/></Route>
           </Switch>
         </Router>
 
