@@ -87,7 +87,7 @@ const CreateSurvey = ({allQue, setAllQue, setIspublish, ispublish}) => {
 
     return (
         <div>
-            <h1>Create Survey</h1>
+            <h1 style ={{color: 'white'}}>Create Survey</h1>
 
 
                 <TypeSelector qtype = {qtype} setQtype = {setQtype} handlechange = {handlechange}/>

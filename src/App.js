@@ -11,8 +11,9 @@ function App() {
   const [allQue, setAllQue] = useState([]);
   const [ispublish, setIspublish] = useState(false);
 
+
   return (
-    <div className="App">
+    <div className="app">
       <div className = "col-md-10 col-12 offset-md-1 text-center">
 
         <Router>
